@@ -1,30 +1,42 @@
-Request to https://www.example.com completed with status code 200 with time 1721911812.985522 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.0455759 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.092331 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.145344 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.196258 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.2482402 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.301345 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.353323 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.410582 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.465182 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.522354 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.578248 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.6341891 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.693436 and thread: Thread-1
-Request to https://www.example.com completed with status code 200 with time 1721911813.750865 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911813.814977 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911813.865391 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911813.9134238 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911813.964449 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.012931 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.070067 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.125365 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.1867578 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.242002 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.301047 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.360003 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.420751 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.479866 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.539419 and thread: Thread-15
-Request to https://www.example.com completed with status code 200 with time 1721911814.59329 and thread: Thread-15
+Request to https://www.example.com completed with status code 200 with time 1721919002.755192 and initial time -0.00016999244689941406
+Request to https://www.example.com completed with status code 200 with time 1721919002.881588 and initial time 0.12622594833374023
+Request to https://www.example.com completed with status code 200 with time 1721919002.932151 and initial time 0.1767890453338623
+Request to https://www.example.com completed with status code 200 with time 1721919002.9768589 and initial time 0.2214968204498291
+Request to https://www.example.com completed with status code 200 with time 1721919003.112084 and initial time 0.3567218780517578
+Request to https://www.example.com completed with status code 200 with time 1721919003.2150478 and initial time 0.4596858024597168
+Request to https://www.example.com completed with status code 200 with time 1721919003.2907069 and initial time 0.5353448390960693
+Request to https://www.example.com completed with status code 200 with time 1721919003.3731961 and initial time 0.6178340911865234
+Request to https://www.example.com completed with status code 200 with time 1721919003.447774 and initial time 0.6924118995666504
+Request to https://www.example.com completed with status code 200 with time 1721919003.5772421 and initial time 0.8218801021575928
+Request to https://www.example.com completed with status code 200 with time 1721919003.656102 and initial time 0.9007399082183838
+Request to https://www.example.com completed with status code 200 with time 1721919003.716096 and initial time 0.9607338905334473
+Sleep: 0.03736996650695801 and Request made: 12
+Request to https://www.example.com completed with status code 200 with time 1721919003.792732 and initial time 1.037369966506958
+Request to https://www.example.com completed with status code 200 with time 1721919003.958543 and initial time 0.12797904014587402
+Request to https://www.example.com completed with status code 200 with time 1721919004.030261 and initial time 0.19969701766967773
+Request to https://www.example.com completed with status code 200 with time 1721919004.101701 and initial time 0.271136999130249
+Request to https://www.example.com completed with status code 200 with time 1721919004.1782541 and initial time 0.3476901054382324
+Request to https://www.example.com completed with status code 200 with time 1721919004.258244 and initial time 0.42768001556396484
+Request to https://www.example.com completed with status code 200 with time 1721919004.338209 and initial time 0.5076448917388916
+Request to https://www.example.com completed with status code 200 with time 1721919004.40532 and initial time 0.5747559070587158
+Request to https://www.example.com completed with status code 200 with time 1721919004.474009 and initial time 0.6434450149536133
+Request to https://www.example.com completed with status code 200 with time 1721919004.5389109 and initial time 0.7083468437194824
+Request to https://www.example.com completed with status code 200 with time 1721919004.609376 and initial time 0.7788119316101074
+Request to https://www.example.com completed with status code 200 with time 1721919004.676228 and initial time 0.8456640243530273
+Request to https://www.example.com completed with status code 200 with time 1721919004.7429261 and initial time 0.9123620986938477
+Sleep: 0.02627396583557129 and Request made: 13
+Request to https://www.example.com completed with status code 200 with time 1721919004.856838 and initial time 1.0262739658355713
+Request to https://www.example.com completed with status code 200 with time 1721919004.9347699 and initial time 0.04662775993347168
+Request to https://www.example.com completed with status code 200 with time 1721919004.981872 and initial time 0.09372997283935547
+Request to https://www.example.com completed with status code 200 with time 1721919005.0333629 and initial time 0.14522075653076172
+Request to https://www.example.com completed with status code 200 with time 1721919005.0931358 and initial time 0.20499372482299805
+Request to https://www.example.com completed with status code 200 with time 1721919005.150194 and initial time 0.2620518207550049
+Request to https://www.example.com completed with status code 200 with time 1721919005.2030458 and initial time 0.31490373611450195
+Request to https://www.example.com completed with status code 200 with time 1721919005.260648 and initial time 0.37250590324401855
+Request to https://www.example.com completed with status code 200 with time 1721919005.3169532 and initial time 0.42881107330322266
+Request to https://www.example.com completed with status code 200 with time 1721919005.368017 and initial time 0.479874849319458
+Request to https://www.example.com completed with status code 200 with time 1721919005.416152 and initial time 0.5280098915100098
+Request to https://www.example.com completed with status code 200 with time 1721919005.4728289 and initial time 0.5846867561340332
+Request to https://www.example.com completed with status code 200 with time 1721919005.5260952 and initial time 0.6379530429840088
+Request to https://www.example.com completed with status code 200 with time 1721919005.5927439 and initial time 0.7046017646789551
+Request to https://www.example.com completed with status code 200 with time 1721919005.644059 and initial time 0.7559168338775635

@@ -14,6 +14,8 @@ class ThreadedRateLimitApiRequestor:
     request_queue = queue.Queue()
     #making the current_request_made static var in the class bc we want to multithread so we need to keep track current_request_made for all the conurrent threads in th class
     current_request_made = 0
+    initial_request_time = time.time()
+
     #Ideally these maximum_requests and interval_seconds should come from a global file so we do not overwrite this from other instances of the methods
     #But for the purpose of the exercise, will allow the constructor set these values 
     #maximum_requests = MAXIMUM_REQUEST
@@ -25,6 +27,7 @@ class ThreadedRateLimitApiRequestor:
         self.request_queue = ThreadedRateLimitApiRequestor.request_queue
         self.last_request_time = ThreadedRateLimitApiRequestor.last_request_time
         self.current_request_made = ThreadedRateLimitApiRequestor.current_request_made
+        self.interval_seconds = ThreadedRateLimitApiRequestor.initial_request_time
         
     '''
     This function will queue an incoming request
@@ -44,16 +47,20 @@ class ThreadedRateLimitApiRequestor:
                 if not self.request_queue.empty():
                     url = self.request_queue.get()
                     if (self.current_request_made <= self.maximum_requests):
-                        #ensuring that if current_request_made + 1 is met and time taken is less than interval than we wait correct amount of time till next interval
+                        time_since_intitial_request = self.last_request_time - self.initial_request_time
+                        #ensuring that if current_request_made + 1 is met or time taken is less than interval than we wait correct amount of time till next interval
                         time_since_last_request = current_time - self.last_request_time 
-                        if time_since_last_request < self.interval_seconds and (self.current_request_made + 1) > self.maximum_requests:
-                            time_sleep = self.interval_seconds - time_since_last_request
+                        if ((time_since_last_request < self.interval_seconds and (self.current_request_made + 1) > self.maximum_requests) or (time_since_intitial_request > self.interval_seconds)):
+                            time_sleep =  (time_since_intitial_request) - self.interval_seconds
+                            if (time_sleep < 0):
+                                time_sleep = time_sleep * -1
                             print(f"Sleep: {time_sleep} and Request made: {self.current_request_made}")
                             time.sleep(time_sleep)
                             self.current_request_made = 0
+                            self.initial_request_time = time.time()
                         # Now execute the request and can hit post or get request 
                         response = self.make_request_with_retries(url) 
-                        print(f"Request to {url} completed with status code {response.status_code} with time {self.last_request_time} and thread: {thread_name}")
+                        print(f"Request to {url} completed with status code {response.status_code} with time {self.last_request_time} and thread: {thread_name} and time since initial time {time_since_intitial_request}")
                         #update current request made to keep track of request availble to be made
                         self.current_request_made += 1
                         #updating last_request_time to current time
@@ -82,13 +89,13 @@ class ThreadedRateLimitApiRequestor:
             break
 
 if __name__ == "__main__":
-    rate_limited_api_requestor = ThreadedRateLimitApiRequestor(maximum_requests=29, interval_seconds=10)
+    rate_limited_api_requestor = ThreadedRateLimitApiRequestor(maximum_requests=10, interval_seconds=5)
     
     #Enqueue some requests
     #ideally this url will be put in a global config and we would have an independent APIrequestor for each url with its relevant
     #max request and interval...
     end_point = "https://www.example.com"
-    queue_count = 30
+    queue_count = 100
 
     for i in range(queue_count):
         rate_limited_api_requestor.queue_request(end_point)
