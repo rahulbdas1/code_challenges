@@ -14,6 +14,7 @@ class ThreadedRateLimitApiRequestor:
     request_queue = queue.Queue()
     #making the current_request_made static var in the class bc we want to multithread so we need to keep track current_request_made for all the conurrent threads in th class
     current_request_made = 0
+    #making the initial_request_time static var in the class bc we want to multithread so we need to keep track current_request_made for all the conurrent threads in th class
     initial_request_time = time.time()
 
     #Ideally these maximum_requests and interval_seconds should come from a global file so we do not overwrite this from other instances of the methods
@@ -27,7 +28,7 @@ class ThreadedRateLimitApiRequestor:
         self.request_queue = ThreadedRateLimitApiRequestor.request_queue
         self.last_request_time = ThreadedRateLimitApiRequestor.last_request_time
         self.current_request_made = ThreadedRateLimitApiRequestor.current_request_made
-        self.interval_seconds = ThreadedRateLimitApiRequestor.initial_request_time
+        self.initial_request_time = ThreadedRateLimitApiRequestor.initial_request_time
         
     '''
     This function will queue an incoming request
@@ -49,9 +50,10 @@ class ThreadedRateLimitApiRequestor:
                     if (self.current_request_made <= self.maximum_requests):
                         time_since_intitial_request = self.last_request_time - self.initial_request_time
                         #ensuring that if current_request_made + 1 is met or time taken is less than interval than we wait correct amount of time till next interval
-                        time_since_last_request = current_time - self.last_request_time 
-                        if ((time_since_last_request < self.interval_seconds and (self.current_request_made + 1) > self.maximum_requests) or (time_since_intitial_request > self.interval_seconds)):
-                            time_sleep =  (time_since_intitial_request) - self.interval_seconds
+                        #or if time_since_intitial_request is greater than interval meaning that there are too many request in a span
+                        if ((time_since_intitial_request < self.interval_seconds and (self.current_request_made + 1) > self.maximum_requests) or (time_since_intitial_request > self.interval_seconds)):
+                            time_sleep =  self.interval_seconds - (time_since_intitial_request) 
+                            #to ensure that if time sleep < 0, we still sleep the correct amount depending on which condiditn above is met
                             if (time_sleep < 0):
                                 time_sleep = time_sleep * -1
                             print(f"Sleep: {time_sleep} and Request made: {self.current_request_made}")
@@ -89,18 +91,18 @@ class ThreadedRateLimitApiRequestor:
             break
 
 if __name__ == "__main__":
-    rate_limited_api_requestor = ThreadedRateLimitApiRequestor(maximum_requests=10, interval_seconds=5)
+    rate_limited_api_requestor = ThreadedRateLimitApiRequestor(maximum_requests=100, interval_seconds=10)
     
     #Enqueue some requests
     #ideally this url will be put in a global config and we would have an independent APIrequestor for each url with its relevant
     #max request and interval...
     end_point = "https://www.example.com"
-    queue_count = 100
+    queue_count = 400
 
     for i in range(queue_count):
         rate_limited_api_requestor.queue_request(end_point)
 
     # Start processing the requests
-    rate_limited_api_requestor.start(5)
+    rate_limited_api_requestor.start(10)
 
     rate_limited_api_requestor.request_queue.join()
