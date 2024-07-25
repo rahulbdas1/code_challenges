@@ -50,12 +50,10 @@ class RateLimitApiRequestor:
                     current_request_made += 1
                     #updating last_request_time to current time
                     self.last_request_time = time.time()
-                    current_time = time.time()
+                #updating current time
+                current_time = time.time()
             else: 
                 break
-
-    def start(self):
-        self.process_request()
 
     def make_request_with_retries(self,url,tries=5):
         for i in range(tries):
@@ -69,17 +67,14 @@ class RateLimitApiRequestor:
             break
 
 if __name__ == "__main__":
-    rate_limited_api_requestor = RateLimitApiRequestor(maximum_requests=10, interval_seconds=10)
+    rate_limited_api_requestor = RateLimitApiRequestor(maximum_requests=4, interval_seconds=10)
 
     end_point = "https://www.example.com"
-    queue_count = 30
+    queue_count = 9
 
     #queueing some requests
     for i in range(queue_count):
         rate_limited_api_requestor.queue_request(end_point)
     
     # Start processing the requests
-    rate_limited_api_requestor.start()
-
-
-    #~10 request can be made per thread.....
+    rate_limited_api_requestor.process_request()

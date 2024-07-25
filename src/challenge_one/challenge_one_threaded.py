@@ -58,7 +58,8 @@ class ThreadedRateLimitApiRequestor:
                         self.current_request_made += 1
                         #updating last_request_time to current time
                         self.last_request_time = time.time()
-                        current_time = time.time()
+                    #updating current timr
+                    current_time = time.time()
                     self.request_queue.task_done()
                 else: 
                     break

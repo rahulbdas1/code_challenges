@@ -8,7 +8,7 @@ def url_redirect_detector(csv_path, outgoing_csv_path, threads=10):
         csv_df['redirect_url'] = csv_df['original_url'].apply(checks_redirect_url)
         csv_df.drop(csv_df[csv_df.redirect_url == ""].index, inplace = True)
         csv_df.to_csv(outgoing_csv_path + 'redirect_urls.csv', index=False)
-        print(csv_df)
+        #print(csv_df)
 
 '''This function wll retry urls as well as return non-empty values if redirect urls are diff than og URL'''
 def checks_redirect_url(url,tries=5):

@@ -1,6 +1,5 @@
 import requests
-
-    
+ 
 def make_request_with_retries(self,url,tries=5):
         for i in range(tries):
             try:
