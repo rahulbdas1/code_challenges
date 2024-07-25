@@ -36,19 +36,21 @@ class RateLimitApiRequestor:
             if not self.request_queue.empty():
                 url = self.request_queue.get()
                 if (current_request_made <= self.maximum_requests):
+                    time_since_last_request = current_time - self.last_request_time 
                     #ensuring that if current_request_made + 1 is met and time taken is less than interval than we wait correct amount of time till next interval
-                    if current_time - self.last_request_time < self.interval_seconds and (current_request_made + 1) > self.maximum_requests:
-                        time_sleep = self.interval_seconds - (current_time - self.last_request_time)
+                    if time_since_last_request < self.interval_seconds and (current_request_made + 1) > self.maximum_requests:
+                        time_sleep = self.interval_seconds - (time_since_last_request)
                         print(f"Sleep: {time_sleep} and Request made: {current_request_made}")
                         time.sleep(time_sleep)
                         current_request_made = 0
                     # Now execute the request and can hit post or get request 
                     response = self.make_request_with_retries(url) 
-                    print(f"Request to {url} completed with status code {response.status_code} with time {current_time}")
+                    print(f"Request to {url} completed with status code {response.status_code} with time {self.last_request_time}")
                     #update current request made to keep track of request availble to be made
                     current_request_made += 1
                     #updating last_request_time to current time
                     self.last_request_time = time.time()
+                    current_time = time.time()
             else: 
                 break
 
@@ -67,10 +69,10 @@ class RateLimitApiRequestor:
             break
 
 if __name__ == "__main__":
-    rate_limited_api_requestor = RateLimitApiRequestor(maximum_requests=2, interval_seconds=10)
+    rate_limited_api_requestor = RateLimitApiRequestor(maximum_requests=10, interval_seconds=10)
 
     end_point = "https://www.example.com"
-    queue_count = 6
+    queue_count = 30
 
     #queueing some requests
     for i in range(queue_count):
@@ -78,3 +80,6 @@ if __name__ == "__main__":
     
     # Start processing the requests
     rate_limited_api_requestor.start()
+
+
+    #~10 request can be made per thread.....

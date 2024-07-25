@@ -2,6 +2,8 @@ import queue
 import threading
 import time
 import requests
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 
 '''
 This class will handle hitting apis that have a rate limit of x requests every y seconds
@@ -10,6 +12,8 @@ class ThreadedRateLimitApiRequestor:
     #Making last_request_time so that it doesnt get overwritten by another app calling this class
     last_request_time = time.time()
     request_queue = queue.Queue()
+    #making the current_request_made static var in the class bc we want to multithread so we need to keep track current_request_made for all the conurrent threads in th class
+    current_request_made = 0
     #Ideally these maximum_requests and interval_seconds should come from a global file so we do not overwrite this from other instances of the methods
     #But for the purpose of the exercise, will allow the constructor set these values 
     #maximum_requests = MAXIMUM_REQUEST
@@ -20,6 +24,7 @@ class ThreadedRateLimitApiRequestor:
         self.lock = threading.Lock()
         self.request_queue = ThreadedRateLimitApiRequestor.request_queue
         self.last_request_time = ThreadedRateLimitApiRequestor.last_request_time
+        self.current_request_made = ThreadedRateLimitApiRequestor.current_request_made
         
     '''
     This function will queue an incoming request
@@ -32,26 +37,28 @@ class ThreadedRateLimitApiRequestor:
     '''
     def process_request(self):
         current_time = time.time()
-        current_request_made = 0
+        time_since_last_request = 0
         while True:
             thread_name = threading.current_thread().name
             with self.lock:
                 if not self.request_queue.empty():
                     url = self.request_queue.get()
-                    if (current_request_made <= self.maximum_requests):
+                    if (self.current_request_made <= self.maximum_requests):
                         #ensuring that if current_request_made + 1 is met and time taken is less than interval than we wait correct amount of time till next interval
-                        if current_time - self.last_request_time < self.interval_seconds and (current_request_made + 1) > self.maximum_requests:
-                            time_sleep = self.interval_seconds - (current_time - self.last_request_time)
-                            print(f"Sleep: {time_sleep} and Request made: {current_request_made}")
+                        time_since_last_request = current_time - self.last_request_time 
+                        if time_since_last_request < self.interval_seconds and (self.current_request_made + 1) > self.maximum_requests:
+                            time_sleep = self.interval_seconds - time_since_last_request
+                            print(f"Sleep: {time_sleep} and Request made: {self.current_request_made}")
                             time.sleep(time_sleep)
-                            current_request_made = 0
+                            self.current_request_made = 0
                         # Now execute the request and can hit post or get request 
                         response = self.make_request_with_retries(url) 
-                        print(f"Request to {url} completed with status code {response.status_code} with time {current_time} and thread: {thread_name}")
+                        print(f"Request to {url} completed with status code {response.status_code} with time {self.last_request_time} and thread: {thread_name}")
                         #update current request made to keep track of request availble to be made
-                        current_request_made += 1
+                        self.current_request_made += 1
                         #updating last_request_time to current time
                         self.last_request_time = time.time()
+                        current_time = time.time()
                     self.request_queue.task_done()
                 else: 
                     break
@@ -61,7 +68,7 @@ class ThreadedRateLimitApiRequestor:
             thread = threading.Thread(target=self.process_request)
             thread.daemon = True  # Threads will exit when main program exits
             thread.start()
-
+               
     def make_request_with_retries(self,url,tries=5):
         for i in range(tries):
             try:
@@ -74,13 +81,13 @@ class ThreadedRateLimitApiRequestor:
             break
 
 if __name__ == "__main__":
-    rate_limited_api_requestor = ThreadedRateLimitApiRequestor(maximum_requests=2, interval_seconds=5)
+    rate_limited_api_requestor = ThreadedRateLimitApiRequestor(maximum_requests=29, interval_seconds=10)
     
-    # Enqueue some requests
+    #Enqueue some requests
     #ideally this url will be put in a global config and we would have an independent APIrequestor for each url with its relevant
     #max request and interval...
     end_point = "https://www.example.com"
-    queue_count = 6
+    queue_count = 30
 
     for i in range(queue_count):
         rate_limited_api_requestor.queue_request(end_point)
