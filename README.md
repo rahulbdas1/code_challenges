@@ -20,7 +20,7 @@ challenge_one_arbitary.py
 
 We can now run the script with arguments:
 
-    code_challenges/src/challenge_one/challenge_one_arbitary.py "" 5 5
+    code_challenges/src/challenge_one/challenge_one_arbitary.py 5 5
 
 
     maximum_requests = sys.argv[0] 
