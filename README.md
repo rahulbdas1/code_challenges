@@ -30,29 +30,28 @@ We can now run the script with arguments:
 Prompt to be able to add at arbitary times:
     Pls enter how many request you want to queue, if none pls enter negative value or 0:
 
-Archeticture:
-    ideally there will be 1 global function that can update the queue to add request, once the request is placed in the queue 
-    than we can process these request asynch on concurrently on the seperate thread so we can keep processing on the main func....
+Ideal Archeticture:
+    Ideally there will be 1 global function that can update the queue to add request, once the request is placed in the queue 
+    than we can process these request asynch and concurrently, meaning that the apis can be requested by a sep thread, while we are using other threads to still add to the queue. We shuold be able to add to the queue W/O having to wait for the api calls to complete and to have adding data to queue like processing streaming data... 
 
-    For this example, i did things VERY simply... we have 1 thread that is doing the processing from adding to the queue to sending the request.... both adding to the queue and sending the request is happening asynch. Ideally we can add to the queoe W/O having to wait for the api calls to complete...
+Current Archeticture:
+    For this example, i did things simply... we have 1 thread that is doing the processing from adding to the queue to sending the request.... both adding to the queue and sending the request is happening asynch, but we have to wait till the current queue is empty b4 we can add more request :(
 
-    Program will ask Users input if they want to add to the queue or end the program, hopefully this is what works for adding to the queue at arbitray times. Other main threads will should be able to hit this global func at any time, in this case it is user response....
+    Program will ask Users input if they want to add to the queue or end the program, hopefully this works for adding to the queue at arbitray times. Other main threads will should be able to hit this global func at any time, in this case it is user response....
 
     Sample logs:
-    Added queue size: 1
-    Added queue size: 2
-    Removed queue size: 1
-    Added queue size: 2
-    Removed queue size: 1
-    Added queue size: 2
-    Removed queue size: 1
-    Added queue size: 2
-    Removed queue size: 1
-    Removed queue size: 0
-    time taken: 0.33 s
-
-    ^processing is happening concurrently...
-
+        Pls enter how many request you want to queue, if none pls enter negative value or 0 and htis will exit program: 5
+        Added queue size: 1
+        Added queue size: 2
+        Removed queue size: 1 with reponse 200
+        Added queue size: 2
+        Removed queue size: 1 with reponse 200
+        Added queue size: 2
+        Removed queue size: 1 with reponse 200
+        Added queue size: 2
+        Removed queue size: 1 with reponse 200
+        Removed queue size: 0 with reponse 200
+        time taken: 0.34 s
 
 ***
 

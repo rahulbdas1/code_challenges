@@ -48,7 +48,6 @@ class RateLimitApiRequestorArbitary:
             await asyncio.sleep(0)           
             if not self.request_queue.empty():
                 url = self.request_queue.get()
-                print(f"Removed queue size: {self.request_queue.qsize()}")
                 if (current_request_made <= self.maximum_requests):
                     time_since_intitial_request = self.last_request_time - initial_request_time
                     #ensuring that if current_request_made + 1 is met or time taken is less than interval than we wait correct amount of time till next interval
@@ -64,6 +63,7 @@ class RateLimitApiRequestorArbitary:
                         initial_request_time = time.time()
                     # Now execute the request and can hit post or get request 
                     response = self.make_request_with_retries(url) 
+                    print(f"Removed queue size: {self.request_queue.qsize()} with reponse {response.status_code}")
                     #print(f"Request to {url} completed with status code {response.status_code} with time {self.last_request_time} and time since initial time {time_since_intitial_request}")
                     #update current request made to keep track of request availble to be made
                     current_request_made += 1
@@ -100,7 +100,7 @@ if __name__ == "__main__":
     rate_limited_api_requestor = RateLimitApiRequestorArbitary(maximum_requests=5, interval_seconds=5)
     keep_alive = True
     while keep_alive == True:
-        val = int(input("Pls enter how many request you want to queue, if none pls enter negative value or 0 and htis will exit program: "))
+        val = int(input("Pls enter how many request you want to queue, if none pls enter negative value or 0 and this will exit program: "))
         if val > 0: 
             #asynch process of adding and removing to queue so they can happen at similar times
             asyncio.run(main(rate_limited_api_requestor,"https://www.example.com",val))
