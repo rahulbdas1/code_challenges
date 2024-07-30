@@ -100,7 +100,7 @@ if __name__ == "__main__":
     rate_limited_api_requestor = RateLimitApiRequestorArbitary(maximum_requests=5, interval_seconds=5)
     keep_alive = True
     while keep_alive == True:
-        val = int(input("Pls enter how many request you want to queue, if none pls enter negative value or 0: "))
+        val = int(input("Pls enter how many request you want to queue, if none pls enter negative value or 0 and htis will exit program: "))
         if val > 0: 
             #asynch process of adding and removing to queue so they can happen at similar times
             asyncio.run(main(rate_limited_api_requestor,"https://www.example.com",val))
