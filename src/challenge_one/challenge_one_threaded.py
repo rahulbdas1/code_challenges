@@ -91,13 +91,13 @@ class ThreadedRateLimitApiRequestor:
             break
 
 if __name__ == "__main__":
-    rate_limited_api_requestor = ThreadedRateLimitApiRequestor(maximum_requests=100, interval_seconds=10)
+    rate_limited_api_requestor = ThreadedRateLimitApiRequestor(maximum_requests=51, interval_seconds=1)
     
     #Enqueue some requests
     #ideally this url will be put in a global config and we would have an independent APIrequestor for each url with its relevant
     #max request and interval...
     end_point = "https://www.example.com"
-    queue_count = 400
+    queue_count = 52
 
     for i in range(queue_count):
         rate_limited_api_requestor.queue_request(end_point)

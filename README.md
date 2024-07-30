@@ -15,6 +15,48 @@ Architecture:
 2) We process these records concurrently while saving our last_request_time and our current request made while we iterate throught the queue
 3) We are multi-threading based on using current_request_made as a static var that is shared across all the instances of the class, this makes sure that we do not pass the rate limit across all instances of the class...
 
+***
+challenge_one_arbitary.py
+
+We can now run the script with arguments:
+
+    code_challenges/src/challenge_one/challenge_one_arbitary.py "" 5 5
+
+
+    maximum_requests = sys.argv[0] 
+    interval_seconds = sys.argv[1]
+
+
+Prompt to be able to add at arbitary times:
+    Pls enter how many request you want to queue, if none pls enter negative value or 0:
+
+Archeticture:
+    ideally there will be 1 global function that can update the queue to add request, once the request is placed in the queue 
+    than we can process these request asynch on concurrently on the seperate thread so we can keep processing on the main func....
+
+    For this example, i did things VERY simply... we have 1 thread that is doing the processing from adding to the queue to sending the request.... both adding to the queue and sending the request is happening asynch. Ideally we can add to the queoe W/O having to wait for the api calls to complete...
+
+    Program will ask Users input if they want to add to the queue or end the program, hopefully this is what works for adding to the queue at arbitray times. Other main threads will should be able to hit this global func at any time, in this case it is user response....
+
+    Sample logs:
+    Added queue size: 1
+    Added queue size: 2
+    Removed queue size: 1
+    Added queue size: 2
+    Removed queue size: 1
+    Added queue size: 2
+    Removed queue size: 1
+    Added queue size: 2
+    Removed queue size: 1
+    Removed queue size: 0
+    time taken: 0.33 s
+
+    ^processing is happening concurrently...
+
+
+***
+
+
 Running Challenge 1
 Challenge_one.py
 1) We can simply run the module and get reponse: 
