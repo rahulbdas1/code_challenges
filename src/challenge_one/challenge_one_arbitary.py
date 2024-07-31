@@ -81,7 +81,7 @@ class RateLimitApiRequestorArbitary:
                     raise
             break
 
-'''Create arbirtary request to queue'''
+'''Create request to queue at random times'''
 def arbitary_requests(api, urls, total_request=5):
     for i in range(total_request):
         time.sleep(random.uniform(0.0, 3))  # Sleep for a random time between 0.0 and 3 seconds

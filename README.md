@@ -35,7 +35,7 @@ Current Archeticture:
     run script: 
     code_challenges/src/challenge_one/challenge_one_arbitary.py
 
-    To mimic arbitary request, pls add lines in main method bf 'rate_limited_api_requestor.request_queue.put('EXIT')' EX:     
+    To mimic arbitary request, pls add lines below in main method before line 'rate_limited_api_requestor.request_queue.put('EXIT')' EX:     
     
     request_thread<UNIQUEID> = threading.Thread(target=arbitary_requests,args=(rate_limited_api_requestor, endpoint, <request_amount>))
     request_thread<UNIQUEID>.start()
