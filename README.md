@@ -20,38 +20,57 @@ challenge_one_arbitary.py
 
 We can now run the script with arguments:
 
-    code_challenges/src/challenge_one/challenge_one_arbitary.py 5 5
+    code_challenges/src/challenge_one/challenge_one_arbitary.py
 
-
-    maximum_requests = sys.argv[0] 
-    interval_seconds = sys.argv[1]
-
-
-Prompt to be able to add at arbitary times:
-    Pls enter how many request you want to queue, if none pls enter negative value or 0:
 
 Ideal Archeticture:
     Ideally there will be 1 global function that can update the queue to add request, once the request is placed in the queue 
     than we can process these request asynch and concurrently, meaning that the apis can be requested by a sep thread, while we are using other threads to still add to the queue. We shuold be able to add to the queue W/O having to wait for the api calls to complete and to have adding data to queue like processing streaming data... 
 
 Current Archeticture:
-    For this example, i did things simply... we have 1 thread that is doing the processing from adding to the queue to sending the request.... both adding to the queue and sending the request is happening asynch, but we have to wait till the current queue is empty b4 we can add more request :(
+    For this example, we have 1 thread that is adding to the queue and another thread is processing the request concurrently....
 
-    Program will ask Users input if they want to add to the queue or end the program, hopefully this works for adding to the queue at arbitray times. Other main threads will should be able to hit this global func at any time, in this case it is user response....
+    How to use: 
+
+    run script: 
+    code_challenges/src/challenge_one/challenge_one_arbitary.py
+
+    To mimic arbitary request, pls add lines in main method bf 'rate_limited_api_requestor.request_queue.put('EXIT')' EX:     
+    
+    request_thread<UNIQUEID> = threading.Thread(target=arbitary_requests,args=(rate_limited_api_requestor, endpoint, <request_amount>))
+    request_thread<UNIQUEID>.start()
+    request_thread<UNIQUEID>.join()
+
+
 
     Sample logs:
-        Pls enter how many request you want to queue, if none pls enter negative value or 0 and htis will exit program: 5
-        Added queue size: 1
-        Added queue size: 2
-        Removed queue size: 1 with reponse 200
-        Added queue size: 2
-        Removed queue size: 1 with reponse 200
-        Added queue size: 2
-        Removed queue size: 1 with reponse 200
-        Added queue size: 2
-        Removed queue size: 1 with reponse 200
-        Removed queue size: 0 with reponse 200
-        time taken: 0.34 s
+
+        Added queue size: 1, contents: ['https://www.example.com']
+        Request to https://www.example.com completed with status code 200 with time 1722401679.976486 and time since initial time -0.00017714500427246094
+        Added queue size: 1, contents: ['https://www.example.com']
+        Request to https://www.example.com completed with status code 200 with time 1722401681.184971 and time since initial time 1.2083079814910889
+        Added queue size: 1, contents: ['https://www.example.com']
+        Request to https://www.example.com completed with status code 200 with time 1722401681.350589 and time since initial time 1.3739259243011475
+        Added queue size: 1, contents: ['https://www.example.com']
+        Request to https://www.example.com completed with status code 200 with time 1722401683.3504488 and time since initial time 3.3737857341766357
+        Added queue size: 1, contents: ['https://www.example.com']
+        Request to https://www.example.com completed with status code 200 with time 1722401684.0961611 and time since initial time 4.119498014450073
+        Added queue size: 1, contents: ['https://www.example.com']
+        Sleep: 14.289039134979248 and Request made: 5
+        Added queue size: 1, contents: ['https://www.example.com']
+        Added queue size: 2, contents: ['https://www.example.com', 'https://www.example.com']
+        Added queue size: 3, contents: ['https://www.example.com', 'https://www.example.com', 'https://www.example.com']
+        Added queue size: 4, contents: ['https://www.example.com', 'https://www.example.com', 'https://www.example.com', 'https://www.example.com']
+        Added queue size: 5, contents: ['https://www.example.com', 'https://www.example.com', 'https://www.example.com', 'https://www.example.com', 'https://www.example.com']
+        Added queue size: 6, contents: ['https://www.example.com', 'https://www.example.com', 'https://www.example.com', 'https://www.example.com', 'https://www.example.com', 'https://www.example.com']
+        Request to https://www.example.com completed with status code 200 with time 1722401685.687624 and time since initial time 5.710960865020752
+        Request to https://www.example.com completed with status code 200 with time 1722401702.896001 and time since initial time 0.07567310333251953
+        Request to https://www.example.com completed with status code 200 with time 1722401702.9524732 and time since initial time 0.13214516639709473
+        Request to https://www.example.com completed with status code 200 with time 1722401703.02202 and time since initial time 0.2016921043395996
+        Request to https://www.example.com completed with status code 200 with time 1722401703.0791302 and time since initial time 0.2588021755218506
+        Sleep: 19.68863797187805 and Request made: 5
+        Request to https://www.example.com completed with status code 200 with time 1722401703.13169 and time since initial time 0.31136202812194824
+        Request to https://www.example.com completed with status code 200 with time 1722401722.875768 and time since initial time 0.05431008338928223
 
 ***
 

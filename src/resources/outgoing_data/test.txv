@@ -1,42 +1,45 @@
-Request to https://www.example.com completed with status code 200 with time 1721919002.755192 and initial time -0.00016999244689941406
-Request to https://www.example.com completed with status code 200 with time 1721919002.881588 and initial time 0.12622594833374023
-Request to https://www.example.com completed with status code 200 with time 1721919002.932151 and initial time 0.1767890453338623
-Request to https://www.example.com completed with status code 200 with time 1721919002.9768589 and initial time 0.2214968204498291
-Request to https://www.example.com completed with status code 200 with time 1721919003.112084 and initial time 0.3567218780517578
-Request to https://www.example.com completed with status code 200 with time 1721919003.2150478 and initial time 0.4596858024597168
-Request to https://www.example.com completed with status code 200 with time 1721919003.2907069 and initial time 0.5353448390960693
-Request to https://www.example.com completed with status code 200 with time 1721919003.3731961 and initial time 0.6178340911865234
-Request to https://www.example.com completed with status code 200 with time 1721919003.447774 and initial time 0.6924118995666504
-Request to https://www.example.com completed with status code 200 with time 1721919003.5772421 and initial time 0.8218801021575928
-Request to https://www.example.com completed with status code 200 with time 1721919003.656102 and initial time 0.9007399082183838
-Request to https://www.example.com completed with status code 200 with time 1721919003.716096 and initial time 0.9607338905334473
-Sleep: 0.03736996650695801 and Request made: 12
-Request to https://www.example.com completed with status code 200 with time 1721919003.792732 and initial time 1.037369966506958
-Request to https://www.example.com completed with status code 200 with time 1721919003.958543 and initial time 0.12797904014587402
-Request to https://www.example.com completed with status code 200 with time 1721919004.030261 and initial time 0.19969701766967773
-Request to https://www.example.com completed with status code 200 with time 1721919004.101701 and initial time 0.271136999130249
-Request to https://www.example.com completed with status code 200 with time 1721919004.1782541 and initial time 0.3476901054382324
-Request to https://www.example.com completed with status code 200 with time 1721919004.258244 and initial time 0.42768001556396484
-Request to https://www.example.com completed with status code 200 with time 1721919004.338209 and initial time 0.5076448917388916
-Request to https://www.example.com completed with status code 200 with time 1721919004.40532 and initial time 0.5747559070587158
-Request to https://www.example.com completed with status code 200 with time 1721919004.474009 and initial time 0.6434450149536133
-Request to https://www.example.com completed with status code 200 with time 1721919004.5389109 and initial time 0.7083468437194824
-Request to https://www.example.com completed with status code 200 with time 1721919004.609376 and initial time 0.7788119316101074
-Request to https://www.example.com completed with status code 200 with time 1721919004.676228 and initial time 0.8456640243530273
-Request to https://www.example.com completed with status code 200 with time 1721919004.7429261 and initial time 0.9123620986938477
-Sleep: 0.02627396583557129 and Request made: 13
-Request to https://www.example.com completed with status code 200 with time 1721919004.856838 and initial time 1.0262739658355713
-Request to https://www.example.com completed with status code 200 with time 1721919004.9347699 and initial time 0.04662775993347168
-Request to https://www.example.com completed with status code 200 with time 1721919004.981872 and initial time 0.09372997283935547
-Request to https://www.example.com completed with status code 200 with time 1721919005.0333629 and initial time 0.14522075653076172
-Request to https://www.example.com completed with status code 200 with time 1721919005.0931358 and initial time 0.20499372482299805
-Request to https://www.example.com completed with status code 200 with time 1721919005.150194 and initial time 0.2620518207550049
-Request to https://www.example.com completed with status code 200 with time 1721919005.2030458 and initial time 0.31490373611450195
-Request to https://www.example.com completed with status code 200 with time 1721919005.260648 and initial time 0.37250590324401855
-Request to https://www.example.com completed with status code 200 with time 1721919005.3169532 and initial time 0.42881107330322266
-Request to https://www.example.com completed with status code 200 with time 1721919005.368017 and initial time 0.479874849319458
-Request to https://www.example.com completed with status code 200 with time 1721919005.416152 and initial time 0.5280098915100098
-Request to https://www.example.com completed with status code 200 with time 1721919005.4728289 and initial time 0.5846867561340332
-Request to https://www.example.com completed with status code 200 with time 1721919005.5260952 and initial time 0.6379530429840088
-Request to https://www.example.com completed with status code 200 with time 1721919005.5927439 and initial time 0.7046017646789551
-Request to https://www.example.com completed with status code 200 with time 1721919005.644059 and initial time 0.7559168338775635
+rahuldas@MacBook-Pro code_challenges % /usr/local/bin/python3.9 /Users/rahuldas/code_challenges/src/challenge_one/challenge_one_arbitar
+y.py
+Added queue size: 1, contents: ['https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398729.058065 and time since initial time -0.00021910667419433594
+Added queue size: 1, contents: ['https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398729.232239 and time since initial time 0.17395496368408203
+Added queue size: 1, contents: ['https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398730.165589 and time since initial time 1.1073050498962402
+Added queue size: 1, contents: ['https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398731.712118 and time since initial time 2.6538338661193848
+Added queue size: 1, contents: ['https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398732.132998 and time since initial time 3.074713945388794
+Added queue size: 1, contents: ['https://www.example.com']
+Sleep: 1.513343095779419 and Request made: 5
+Added queue size: 1, contents: ['https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398732.544941 and time since initial time 3.486656904220581
+Request to https://www.example.com completed with status code 200 with time 1722398735.946254 and time since initial time 0.07045292854309082
+Added queue size: 1, contents: ['https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398736.010365 and time since initial time 0.13456392288208008
+Added queue size: 1, contents: ['https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398736.3822222 and time since initial time 0.5064210891723633
+Added queue size: 1, contents: ['https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398737.0082061 and time since initial time 1.1324050426483154
+Added queue size: 1, contents: ['https://www.example.com']
+Sleep: 3.5417871475219727 and Request made: 5
+Added queue size: 1, contents: ['https://www.example.com']
+Added queue size: 2, contents: ['https://www.example.com', 'https://www.example.com']
+Added queue size: 3, contents: ['https://www.example.com', 'https://www.example.com', 'https://www.example.com']
+Added queue size: 4, contents: ['https://www.example.com', 'https://www.example.com', 'https://www.example.com', 'https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398737.334014 and time since initial time 1.4582128524780273
+Request to https://www.example.com completed with status code 200 with time 1722398741.470655 and time since initial time 0.05399298667907715
+Request to https://www.example.com completed with status code 200 with time 1722398741.52497 and time since initial time 0.10830807685852051
+Added queue size: 2, contents: ['https://www.example.com', 'https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398741.581964 and time since initial time 0.16530203819274902
+Request to https://www.example.com completed with status code 200 with time 1722398741.6420999 and time since initial time 0.22543787956237793
+Sleep: 4.711360931396484 and Request made: 5
+Added queue size: 1, contents: ['https://www.example.com']
+Added queue size: 2, contents: ['https://www.example.com', 'https://www.example.com']
+Added queue size: 3, contents: ['https://www.example.com', 'https://www.example.com', 'https://www.example.com']
+Added queue size: 4, contents: ['https://www.example.com', 'https://www.example.com', 'https://www.example.com', 'https://www.example.com']
+Request to https://www.example.com completed with status code 200 with time 1722398741.705301 and time since initial time 0.2886390686035156
+Request to https://www.example.com completed with status code 200 with time 1722398746.477461 and time since initial time 0.05570697784423828
+Request to https://www.example.com completed with status code 200 with time 1722398746.532938 and time since initial time 0.11118388175964355
+Request to https://www.example.com completed with status code 200 with time 1722398746.590039 and time since initial time 0.16828489303588867
+Request to https://www.example.com completed with status code 200 with time 1722398746.645509 and time since initial time 0.2237548828125
